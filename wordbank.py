@@ -1,4 +1,4 @@
-words = [
+word_bank = [
     'something',
     'friend',
     'soup',

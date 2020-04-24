@@ -14,9 +14,8 @@ class Word():
       show_word += "_ "
     print(show_word)
 
-word = Word('bruna')
+word = show_word
 word.display_word()
-
 
 
 

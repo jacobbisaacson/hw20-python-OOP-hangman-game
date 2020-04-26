@@ -2,8 +2,6 @@ print('hangman!')
 
 import random
 from wordbank import word_bank
-print(random.choice(word_bank))
-from wordbank import word_bank
 
 word = random.choice(word_bank)
 blank = ""
@@ -11,6 +9,35 @@ for char in word:
   blank += "_ "
 print(blank)
 guessed_letters = []
+remaining_guesses = 8
+
+
+class Word():
+  def __init__(self, word):
+    self.word = word
+    self.blank = ["_" for char in word]
+  def print(self):
+    print(" ".join(self.blank))
+  def check(self, letter):
+    if letter in self.word:
+      if char not in self.blank:
+        for i, val in enumerate(self.word):
+          if val == char:
+            self.blank[i] = char
+            self.print()
+            print(f"{char} is a correct guess!")
+      else:
+        remaining_guesses -= 1
+        print(f"{char} is incorrect, you have {remaining_guesses} remaining")
+
+
+word = Word(word)
+print(word.__dict__)
+word.check('')
+
+
+
+
 
 
 
@@ -22,19 +49,12 @@ guessed_letters = []
 #   def guessed(self, guess):
 #     self.guess = True
 
-class Word():
-  def __init__(self, word):
-    self.word = word
 
   # def display(self):
   #   blank = ""
   #   for char in self.word:
   #     blank += "_ "
   #   print(blank)
-
-word = Word(word)
-print(word.__dict__)
-
 
 
 

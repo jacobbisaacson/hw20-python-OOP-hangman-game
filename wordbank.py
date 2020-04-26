@@ -9,5 +9,9 @@ word_bank = [
     'happy',
     'nowhere',
     'trust',
-    'present'
+    'present',
+    'another',
+    'jacob',
+    'lover',
+    'cutie'
 ]

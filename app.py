@@ -16,24 +16,33 @@ class Word():
   def __init__(self, word):
     self.word = word
     self.blank = ["_" for char in word]
-  def print(self):
+    self.wrong = []
+  def print_word(self):
     print(" ".join(self.blank))
   def check(self, letter):
-    if letter in self.word:
+    if letter in self.wrong:
+      print("already guessed, try again")
+      return
+    if char in self.word:
       if char not in self.blank:
         for i, val in enumerate(self.word):
           if val == char:
             self.blank[i] = char
-            self.print()
+            self.print_word()
             print(f"{char} is a correct guess!")
       else:
         remaining_guesses -= 1
+        self.wrong.append(char)
+        print(self.wrong)
         print(f"{char} is incorrect, you have {remaining_guesses} remaining")
+
+start = input("Let's play hangman! (type 'y' to play)")
+if start == "y":
+  print(f"let's do it! you have {remaining_guesses} tries")
 
 
 word = Word(word)
-print(word.__dict__)
-word.check('')
+# print(word.__dict__)
 
 
 

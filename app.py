@@ -2,23 +2,27 @@ print('hangman!')
 
 import random
 from wordbank import word_bank
+import sys
 
-word = random.choice(word_bank)
-blank = ""
-for char in word:
-  blank += "_ "
-print(blank)
-guessed_letters = []
-remaining_guesses = 8
+# word = random.choice(word_bank)
+# blank = ""
+# for char in word:
+#   blank += "_ "
+# print(blank)
+# guessed_letters = []
+# remaining_guesses = 8
 
 
 class Word():
   def __init__(self, word):
     self.word = word
-    self.blank = ["_" for char in word]
+    self.blank = ["_"for char in word]
     self.wrong = []
+    self.remaining_guesses = 8
+
   def print_word(self):
     print(" ".join(self.blank))
+    
   def check(self, letter):
     if letter in self.wrong:
       print("already guessed, try again")
@@ -31,17 +35,65 @@ class Word():
             self.print_word()
             print(f"{char} is a correct guess!")
       else:
-        remaining_guesses -= 1
-        self.wrong.append(char)
-        print(self.wrong)
-        print(f"{char} is incorrect, you have {remaining_guesses} remaining")
+        print("correct!")
+        return
+    else:
+      remaining_guesses -= 1
+      self.wrong.append(char)
+      print(f"{char} is incorrect, you have {remaining_guesses} remaining")
 
-start = input("Let's play hangman! (type 'y' to play)")
-if start == "y":
-  print(f"let's do it! you have {remaining_guesses} tries")
+def start():
+  global word
+  word = Word(word)
+  print(word.remaining_guesses)
+  word.print_word()
+  turn()
 
 
-word = Word(word)
+def turn():
+  char = input("your turn, guess a letter")
+  word.check(char.lower())
+  word_win()
+
+def word_win():
+  if word.remaining_guesses == 0:
+    print("loser")
+    play_again = input("want to play again? (type 'y' to play)")
+    if play_again.lower() == 'y':
+      start()
+    else: 
+      print('k fine bye')
+      sys.exit()
+  if '_' in word.blank:
+    print('nice, guess another')
+    turn()
+  else: 
+    print("winner!")
+    play_again = input("want to play again? (type 'y' to play): ")
+    if play_again.lower() == 'y':
+      start()
+    else: 
+      print('k fine bye')
+      sys.exit()
+
+
+start = input("Let's play hangman! (type 'y' to play): ")
+if start.lower() == "y":
+  start()
+else:
+  print('k fine bye')
+  sys.exit()
+# else:
+#   print('k fine bye')
+  # return
+
+  # print(f"let's do it! you have {remaining_guesses} tries")
+  # word = Word(word)
+  # print("guess letters!")
+  # word.print_word()
+  # turn()
+
+# word = Word(word)
 # print(word.__dict__)
 
 

@@ -4,13 +4,27 @@ from wordbank import word_bank
 for word in word_bank:
 	print(word)
 
-class Letter():
-  def __init__(self, character):
-    self.character = character
-    self.guess = False
+# class Letter():
+#   def __init__(self, character):
+#     self.character = character
+#     self.guess = False
 
-  def guessed(self, guess):
-    self.guess = True
+#   def guessed(self, guess):
+#     self.guess = True
+
+class Word():
+  def __init__(self, word):
+    self.word = word
+
+  def display(self):
+    blank = ""
+    for char in self.word:
+      blank += "_ "
+    print(blank)
+word = Word("something")
+word.display()
+
+
 
 
 

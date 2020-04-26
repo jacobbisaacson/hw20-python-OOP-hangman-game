@@ -1,8 +1,18 @@
 print('hangman!')
 
+import random
 from wordbank import word_bank
-for word in word_bank:
-	print(word)
+print(random.choice(word_bank))
+from wordbank import word_bank
+
+word = random.choice(word_bank)
+blank = ""
+for char in word:
+  blank += "_ "
+print(blank)
+guessed_letters = []
+
+
 
 # class Letter():
 #   def __init__(self, character):
@@ -16,13 +26,14 @@ class Word():
   def __init__(self, word):
     self.word = word
 
-  def display(self):
-    blank = ""
-    for char in self.word:
-      blank += "_ "
-    print(blank)
-word = Word("something")
-word.display()
+  # def display(self):
+  #   blank = ""
+  #   for char in self.word:
+  #     blank += "_ "
+  #   print(blank)
+
+word = Word(word)
+print(word.__dict__)
 
 
 

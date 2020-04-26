@@ -1,30 +1,46 @@
 print('hangman!')
 
-import random
 from wordbank import word_bank
-print(random.choice(word_bank))
+for word in word_bank:
+	print(word)
 
-class Word():
-  def __init__(self, word):
-    self.word = word
+class Letter():
+  def __init__(self, character):
+    self.character = character
+    self.guess = False
 
-  def display_word(self):
-    show_word = ""
-    for char in self.word:
-      show_word += "_ "
-    print(show_word)
-
-word = show_word
-word.display_word()
+  def guessed(self, guess):
+    self.guess = True
 
 
 
 
 
+# import random
+# from wordbank import word_bank
+# print(random.choice(word_bank))
 
-remaining_guesses = 8
-letters_used = []
-chosen_word = []
+# class Word():
+#   def __init__(self, word):
+#     self.word = word
+
+#   def display_word(self):
+#     show_word = ""
+#     for char in self.word:
+#       show_word += "_ "
+#     print(show_word)
+
+# # word = show_word
+# # word.display_word()
+
+
+
+
+
+
+# remaining_guesses = 8
+# letters_used = []
+# chosen_word = []
 
 
 
